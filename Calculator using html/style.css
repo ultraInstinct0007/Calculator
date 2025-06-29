@@ -1,0 +1,109 @@
+/* -------------- Base styles (desktop first) -------------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;          /* lets content grow past 100 vh if needed */
+    background: #8ecef1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;              /* stops the calc touching phone edges */
+}
+
+.calculator{
+    background: #3a4452;
+    padding: 20px;
+    border-radius: 10px;   
+    width: 100%;
+    max-width: 380px;           /* comfortable size on laptops/large tablets */
+}
+
+.calculator form{
+    display: flex;
+    flex-wrap: wrap;            /* allows buttons to wrap on narrow screens */
+    justify-content: center;
+}
+
+.calculator form input{
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255,255,255,0.1),
+                 5px  5px 15px rgba(0,0,0,0.2);
+    background: transparent;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* display field (top row) */
+form .display{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 20px 0;
+}
+form .display input{
+    flex: 1;
+    text-align: right;
+    font-size: 45px;
+    box-shadow: none;
+    background: transparent;
+    color: #fff;
+}
+
+/* special-function keys */
+form input.equal{
+    width: 145px;
+}
+form input.operator{
+    background: orange;
+    color: #000;
+}
+form input.equalto{
+    background: rgb(228,43,43);
+    color: #000;
+}
+
+/* -------------- Responsive tweaks -------------- */
+
+@media (max-width: 768px){
+    .calculator form input{
+        width: 55px;
+        height: 55px;
+        font-size: 18px;
+        margin: 8px;
+    }
+    form input.equal{
+        width: 128px;
+    }
+}
+
+/* Small devices: most phones (< 480 px) */
+@media (max-width: 480px){
+    .calculator{
+        max-width: 320px;       /* keeps calculator inside phone viewport */
+        padding: 15px;
+    }
+    .calculator form input{
+        /* Use percentage of viewport width for square buttons */
+        width: 20vw;            /* roughly 4 buttons per row with gaps */
+        height: 20vw;
+        font-size: 6vw;         /* scales text with button size */
+        margin: 3vw 2vw;        /* consistent gaps */
+    }
+    form.input, form .display input{
+        font-size: 8vw;         /* big, readable display text */
+    }
+    form input.equal{
+        width: 44vw;            /* spans two button slots */
+    }
+}
